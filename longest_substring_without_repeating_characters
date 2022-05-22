@@ -1,0 +1,16 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        nonrepstr = ""
+        maxlen = len(nonrepstr)
+        for alpha in s:
+            if alpha in nonrepstr:
+                if len(nonrepstr) > maxlen:
+                    maxlen = len(nonrepstr)
+                alphaindex = nonrepstr.index(alpha)
+                nonrepstr = nonrepstr[alphaindex+1:]
+                nonrepstr = nonrepstr+alpha
+            else:
+                nonrepstr = nonrepstr+alpha
+                if len(nonrepstr) > maxlen:
+                    maxlen = len(nonrepstr)
+        return maxlen
